@@ -1,4 +1,4 @@
-!/usr/local/bin/bash
+#!/usr/bin/bash
 
 if [[ $# -eq 0 ]] ; then
     echo 'you need to supply and env name'
