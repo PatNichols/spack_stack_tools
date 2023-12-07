@@ -11,23 +11,22 @@ export ENV=$PWD/envs/$1
 
 echo "spack stack create env --name ${1} --template skylab-dev --site linux.default"
 
-spack stack create env --name $1 --template skylab-dev --site macos.default
+spack stack create env --name $1 --template skylab-dev --site linux.default
 
 spack env activate $ENV
 
 export SPACK_SYSTEM_CONFIG_PATH=$ENV/site
 
-spack external find --scope system
+spack external find --scope system \
+    --exclude bison --exclude cmake \
+    --exclude curl --exclude openssl \
+    --exclude openssh
 spack external find --scope system perl
-spack external find --scope system python
 spack external find --scope system wget
-
-spack external find curl
-
-#Skip qt@5 for now
+spack external find --scope system mysql
 spack external find --scope system texlive
 
-spack compiler find  --scope system
+spack compiler find --scope system
 
 unset SPACK_SYSTEM_CONFIG_PATH
 

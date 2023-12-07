@@ -9,10 +9,10 @@ export ENV=$PWD/envs/$1
 source setup.sh
 spack env activate $ENV
 #spack install
-ml purge
-ml use $ENV/install/modulefiles/Core
-ml stack-gcc
-ml stack-openmpi
-ml stack-python
-ml jedi-fv3-env
-ml ewok-env
+module load purge
+module load use $ENV/install/modulefiles/Core
+module load stack-gcc
+module load stack-openmpi
+module load stack-python
+module load jedi-fv3-env
+module load py-cartopy
