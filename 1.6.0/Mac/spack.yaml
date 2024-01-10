@@ -1,0 +1,27 @@
+# spack-stack hash: 6d6dcdc
+# spack hash: 76bf231c08
+spack:
+  concretizer:
+    unify: when_possible
+
+  view: false
+  include:
+  - site
+  - common
+
+  definitions:
+  - compilers: ['%apple-clang']
+  - packages:
+    - py-cartopy
+    - jedi-base-env
+    - crtm@2.4.0.1
+  specs:
+  - matrix:
+    - [$packages]
+    - [$compilers]
+  packages:
+    all:
+      providers:
+        mpi: [openmpi@4.1.6]
+      compiler:
+      - apple-clang@14.0.0
