@@ -9,9 +9,9 @@ source $PWD/setup.sh
 
 export ENV=$PWD/envs/$1
 
-echo "spack stack create env --name ${1} --template skylab-dev --site macos.default"
+echo "spack stack create env --name ${1} --template skylab-dev --site linux.default"
 
-spack stack create env --name $1 --template skylab-dev --site macos.default
+spack stack create env --name $1 --template skylab-dev --site linux.default
 
 spack env activate $ENV
 
@@ -27,8 +27,6 @@ spack external find --scope system texlive
 
 spack compiler find --scope system
 
-spack config --scope system add packages:pkg-config:buildable:false
-
 unset SPACK_SYSTEM_CONFIG_PATH
 
 spack config add "packages:fontconfig:variants:+pic"
@@ -36,6 +34,7 @@ spack config add "packages:pixman:variants:+pic"
 spack config add "packages:cairo:variants:+pic"
 spack config add "packages:libffi:version:['3.3']"
 spack config add "packages:flex:version:['2.6.4']"
-spack config add "packages:all:providers:mpi:[openmpi@4.1.6]"
-spack config add "packages:all:compiler:[gcc@14.0.0]"
 
+#Example for Ubuntu 20.04 following the above instructions
+spack config add "packages:all:providers:mpi:[openmpi@4.1.5]"
+spack config add "packages:all:compiler:[gcc@11.2.1]"
